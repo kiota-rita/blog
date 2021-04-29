@@ -6,11 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 
@@ -33,6 +36,11 @@ public class Postagem {
 	
 	@Temporal(TemporalType.TIMESTAMP) //indica como será computado a data
 	private Date data = new java.sql.Date(System.currentTimeMillis());
+	
+	//tabela tema
+	@ManyToOne //indica que varias tabelas se conectam a esta
+	@JsonIgnoreProperties("postagens") //não entendi o que essa anotação faz
+	private Tema tema;
 	
 	//get and set
 	public long getId() {
@@ -59,7 +67,13 @@ public class Postagem {
 	public void setData(Date data) {
 		this.data = data;
 	}
-	
+	//get and set tabela tema
+	public Tema getTema() {
+		return tema;
+	}
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 	
 	
 }
