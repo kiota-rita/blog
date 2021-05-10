@@ -19,7 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity //esta classe é uma entidade do jpa hibernate
 @Table (name="postagem")//esta entidade cria uma tabela dentro do db 
-
 public class Postagem {
 	
 	@Id //id da tabela
